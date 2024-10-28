@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.OrdersDAO">
+  <resultMap type="orders" id="ordersMap">
+    <id property="ordersid" column="ordersid" />
+    <result property="ordercode" column="ordercode" />
+    <result property="usersid" column="usersid" />
+    <result property="houseid" column="houseid" />
+    <result property="servsid" column="servsid" />
+    <result property="addtime" column="addtime" />
+    <result property="orderdate" column="orderdate" />
+    <result property="sections" column="sections" />
+    <result property="status" column="status" />
+    <result property="memo" column="memo" />
+    <result property="username" column="username" />
+    <result property="houseno" column="houseno" />
+    <result property="servsname" column="servsname" />
+  </resultMap>
+  <!-- 插入语句 DAO通过id调用此配置 -->
+  <insert id="insertOrders" parameterType="orders">
+    insert into orders(ordersid , ordercode , usersid , houseid , servsid , addtime , orderdate , sections , status , memo ) values(#{ordersid} , #{ordercode} ,
+    #{usersid} , #{houseid} , #{servsid} , #{addtime} , #{orderdate} , #{sections} , #{status} , #{memo} )
+  </insert>
+  <!-- 更新语句 DAO通过id调用此配置 -->
+  <update id="updateOrders" parameterType="orders">
+    update orders set ordercode=#{ordercode} , usersid=#{usersid} , houseid=#{houseid} , servsid=#{servsid} , addtime=#{addtime} , orderdate=#{orderdate} ,
+    sections=#{sections} , status=#{status} , memo=#{memo} where ordersid=#{ordersid}
+  </update>
+  <!-- 按主键删除 DAO通过id调用此配置 -->
+  <delete id="deleteOrders" parameterType="String">
+    delete from orders where ordersid = #{ordersid}
+  </delete>
+  <!-- 查询全部信息 DAO通过id调用此配置 -->
+  <select id="getAllOrders" resultMap="ordersMap">
+    select a.* , b.username , c.houseno , d.servsname from orders a , users b , house c , servs d where a.usersid = b.usersid and a.houseid = c.houseid and a.servsid =
+    d.servsid order by ordersid desc
+  </select>
+
+  <!-- 按主键查询 DAO通过id调用此配置 -->
+  <select id="getOrdersById" parameterType="String" resultMap="ordersMap">
+    select a.* , b.username , c.houseno , d.servsname from orders a , users b , house c , servs d where a.usersid = b.usersid and a.houseid = c.houseid and a.servsid =
+    d.servsid and ordersid=#{ordersid} order by ordersid desc
+  </select>
+  <!-- 按条件精确查询 DAO通过id调用此配置 -->
+  <select id="getOrdersByCond" parameterType="orders" resultMap="ordersMap">
+    select a.* , b.username , c.houseno , d.servsname from orders a , users b , house c , servs d where a.usersid = b.usersid and a.houseid = c.houseid and
+    a.servsid = d.servsid
+    <if test="ordercode != null and '' != ordercode">
+      and a.ordercode = #{ordercode}
+    </if>
+    <if test="usersid != null and '' != usersid">
+      and a.usersid = #{usersid}
+    </if>
+    <if test="houseid != null and '' != houseid">
+      and a.houseid = #{houseid}
+    </if>
+    <if test="servsid != null and '' != servsid">
+      and a.servsid = #{servsid}
+    </if>
+    <if test="addtime != null and '' != addtime">
+      and a.addtime = #{addtime}
+    </if>
+    <if test="orderdate != null and '' != orderdate">
+      and a.orderdate = #{orderdate}
+    </if>
+    <if test="sections != null and '' != sections">
+      and a.sections = #{sections}
+    </if>
+    <if test="status != null and '' != status">
+      and a.status = #{status}
+    </if>
+    <if test="memo != null and '' != memo">
+      and a.memo = #{memo}
+    </if>
+  </select>
+  <!-- 按条件模糊查询 DAO通过id调用此配置 -->
+  <select id="getOrdersByLike" parameterType="orders" resultMap="ordersMap">
+    select a.* , b.username , c.houseno , d.servsname from orders a , users b , house c , servs d where a.usersid = b.usersid and a.houseid = c.houseid and
+    a.servsid = d.servsid
+    <if test="ordercode != null and '' != ordercode">
+      and a.ordercode like CONCAT('%', CONCAT(#{ordercode}, '%'))
+    </if>
+    <if test="usersid != null and '' != usersid">
+      and b.username like CONCAT('%', CONCAT(#{usersid}, '%'))
+    </if>
+    <if test="houseid != null and '' != houseid">
+      and c.houseno like CONCAT('%', CONCAT(#{houseid}, '%'))
+    </if>
+    <if test="servsid != null and '' != servsid">
+      and d.servsname like CONCAT('%', CONCAT(#{servsid}, '%'))
+    </if>
+    <if test="addtime != null and '' != addtime">
+      and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+    </if>
+    <if test="orderdate != null and '' != orderdate">
+      and a.orderdate like CONCAT('%', CONCAT(#{orderdate}, '%'))
+    </if>
+    <if test="sections != null and '' != sections">
+      and a.sections like CONCAT('%', CONCAT(#{sections}, '%'))
+    </if>
+    <if test="status != null and '' != status">
+      and a.status like CONCAT('%', CONCAT(#{status}, '%'))
+    </if>
+    <if test="memo != null and '' != memo">
+      and a.memo like CONCAT('%', CONCAT(#{memo}, '%'))
+    </if>
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ssm_zhsqglxt:Web exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/ssm_zhsqglxt_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ssm_zhsqglxt/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ssm_zhsqglxt" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

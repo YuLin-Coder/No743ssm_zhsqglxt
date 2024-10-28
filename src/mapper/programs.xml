@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.ProgramsDAO">
+  <resultMap type="programs" id="programsMap">
+    <id property="programsid" column="programsid" />
+    <result property="programsname" column="programsname" />
+    <result property="addtime" column="addtime" />
+  </resultMap>
+  <!-- 插入语句 DAO通过id调用此配置 -->
+  <insert id="insertPrograms" parameterType="programs">
+    insert into programs(programsid , programsname , addtime ) values(#{programsid} , #{programsname} , #{addtime} )
+  </insert>
+  <!-- 更新语句 DAO通过id调用此配置 -->
+  <update id="updatePrograms" parameterType="programs">
+    update programs set programsname=#{programsname} , addtime=#{addtime} where programsid=#{programsid}
+  </update>
+  <!-- 按主键删除 DAO通过id调用此配置 -->
+  <delete id="deletePrograms" parameterType="String">
+    delete from programs where programsid = #{programsid}
+  </delete>
+  <!-- 查询全部信息 DAO通过id调用此配置 -->
+  <select id="getAllPrograms" resultMap="programsMap">
+    select a.* from programs a order by programsid desc
+  </select>
+
+  <!-- 按主键查询 DAO通过id调用此配置 -->
+  <select id="getProgramsById" parameterType="String" resultMap="programsMap">
+    select a.* from programs a where programsid=#{programsid} order by programsid desc
+  </select>
+  <!-- 按条件精确查询 DAO通过id调用此配置 -->
+  <select id="getProgramsByCond" parameterType="programs" resultMap="programsMap">
+    select a.* from programs a where 1=1
+    <if test="programsname != null and '' != programsname">
+      and a.programsname = #{programsname}
+    </if>
+    <if test="addtime != null and '' != addtime">
+      and a.addtime = #{addtime}
+    </if>
+  </select>
+  <!-- 按条件模糊查询 DAO通过id调用此配置 -->
+  <select id="getProgramsByLike" parameterType="programs" resultMap="programsMap">
+    select a.* from programs a where 1=1
+    <if test="programsname != null and '' != programsname">
+      and a.programsname like CONCAT('%', CONCAT(#{programsname}, '%'))
+    </if>
+    <if test="addtime != null and '' != addtime">
+      and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+    </if>
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

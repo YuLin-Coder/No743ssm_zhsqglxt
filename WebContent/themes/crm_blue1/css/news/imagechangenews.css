@@ -1,0 +1,30 @@
+.imagechangenews_pnode {
+	padding: 1px 7px;background-color: rgb(204, 204, 204);border-radius: 5px;margin-right:5px;opacity:0.3;position:relative;bottom:3px;
+}
+a.imagechangenews_pnode:link {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(102, 102, 102);
+}
+a.imagechangenews_pnode:visited {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(102, 102, 102);
+}
+a.imagechangenews_pnode:active {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(153, 153, 153);
+}
+a.imagechangenews_pnode:hover {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(153, 153, 153);
+}
+.imagechangenews_fnode {
+	padding: 1px 7px;background-color: rgb(241,123,10);border-radius: 5px;margin-right: 5px; position:relative;bottom:3px;
+}
+a.imagechangenews_fnode:link {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(241,123,10);
+}
+a.imagechangenews_fnode:visited {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(241,123,10);
+}
+a.imagechangenews_fnode:active {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(241,123,10);
+}
+a.imagechangenews_fnode:hover {
+	color: rgb(255, 255, 255); line-height: 15px; font-family: 宋体; font-size: 15px; text-decoration: none; background-color: rgb(241,123,10);
+}
